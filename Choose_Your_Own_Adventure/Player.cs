@@ -8,5 +8,13 @@ namespace Choose_Your_Own_Adventure
 {
     internal class Player
     {
+        public String s_Name;
+        public int i_HP;
+        public int i_Attack;
+        public int i_Defense;
+        public int i_Speed;
+        
+
+
     }
 }
