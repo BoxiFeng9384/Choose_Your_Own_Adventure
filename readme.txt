@@ -59,3 +59,4 @@ Requirement:
 	
 
 Game Instruction
+	The game is pretty simple. The player just need to make decision to stack their power in order to kill the boss and end the game.There are some secret ways that could make the game much much more easier.
