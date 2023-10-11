@@ -69,6 +69,23 @@ namespace Choose_Your_Own_Adventure
                 }
             }
         }
+        public void fight(Character character)
+        {
+            if (character.HP <= 0)
+            {
+                Console.WriteLine("You kill a innocent character");
+            }
+            else
+            {
+                int damage = this.i_Attack - character.GetDefense;
+                if (damage > 0)
+                {
+                    character.TakeDamage(damage);
+                    Console.WriteLine($"{s_Name} attacks {character.s_Name} for {damage} damage!");
+                    this.fight(character);
+                }
+            }
+        }
         public override void printinfo()
         {
             Console.WriteLine("Player Name: " + s_Name);

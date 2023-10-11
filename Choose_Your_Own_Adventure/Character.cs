@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Choose_Your_Own_Adventure
 {
@@ -37,7 +38,13 @@ namespace Choose_Your_Own_Adventure
                         return i_Attack; 
                     } 
         }
-
+        public int GetDefense
+        {
+            get
+            {
+                return i_Defense;
+            }
+        }
         public void TakeDamage(int damage) 
         {
             i_HP -= damage;
@@ -45,10 +52,10 @@ namespace Choose_Your_Own_Adventure
 
         public virtual void printinfo() 
         {
-            Console.WriteLine("Name: " + s_Name);
-            Console.WriteLine("HP: "+ i_HP);
-            Console.WriteLine("ATK: " + i_Attack);
-            Console.WriteLine("DEF: "+ i_Defense);
+            Console.WriteLine("Character Name: " + s_Name);
+            Console.WriteLine("Character HP: " + i_HP);
+            Console.WriteLine("Character ATK: " + i_Attack);
+            Console.WriteLine("Character DEF: " + i_Defense);
         }
 
         

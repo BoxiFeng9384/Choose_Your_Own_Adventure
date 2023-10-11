@@ -11,19 +11,30 @@ namespace Choose_Your_Own_Adventure
         private string Description;
         private Enemy Enemy;
         private Item Loot;
+        private Character Character;
+        private int id = 1;
+        private int count = 1;
 
         public Room(string description, Enemy enemy , Item loot)
         {
             this.Description = description;
             this.Enemy = enemy;
             this.Loot = loot;
+            id = count;
+            count++;
         }
         public Room Nextroom = null;
         public Room Prevroom = null;
         public Door NextDoor = null;
-
+        public Room(string description, Character character, Item loot)
+        {
+            this.Description = description;
+            this.Character = character;
+            this.Loot = loot;
+        }
         public void PrintRoomDetails(Player player)
         {
+            Console.WriteLine("");
             Console.WriteLine($"You enter a room: {Description}");
 
             if (Enemy != null)
@@ -35,12 +46,18 @@ namespace Choose_Your_Own_Adventure
 
         public void ChooseAction(Player player)
         {
+            Console.WriteLine("");
+            Console.WriteLine("You enter Room"+id);
             Console.WriteLine("Choose an action:");
             Console.WriteLine("1. Find Loot in the room");
-            Console.WriteLine("2. Fight an enemy");
+            Console.WriteLine("2. Fight ");
             if (Enemy != null) 
             {
                 Enemy.printinfo();
+            }
+            if (Character != null)
+            { 
+                Character.printinfo();
             }
             Console.WriteLine("3. Back to previous chioce");
             Console.Write("Enter your choice (1 or 2 or 3): ");
@@ -52,8 +69,8 @@ namespace Choose_Your_Own_Adventure
                     if (Loot != null) 
                     {
                         player.AddItemToInventory(Loot);
-                        this.ChooseAction(player);
                         Loot = null;
+                        this.ChooseAction(player);
                     }
                     else 
                     { 
@@ -66,12 +83,21 @@ namespace Choose_Your_Own_Adventure
                     if (Enemy != null)
                     {
                         player.fight(Enemy);
-                        this.ChooseAction(player);
                         player.printinfo();
+                        Enemy = null;
+                        this.ChooseAction(player);
                     }
-                    else 
+                    else if (Character != null)
                     {
-                        Console.WriteLine("There is no Enemy Here");
+                        player.fight(Character);
+                        player.printinfo();
+                        Character = null;
+                        this.ChooseAction(player);
+                    }
+                    else
+                    {
+                        Console.WriteLine("There is no one Here");
+                        this.ChooseAction(player);
                     }
                 }
                 else if(choice == 3) 
@@ -81,7 +107,7 @@ namespace Choose_Your_Own_Adventure
             }
             else
             {
-                Console.WriteLine("Invalid input. Please enter 1 or 2.");
+                Console.WriteLine("Invalid input. Please enter 1 or 2 or 3.");
                 this.ChooseAction(player);
             }
         }
@@ -111,7 +137,9 @@ namespace Choose_Your_Own_Adventure
                     else
                     {
                         Console.WriteLine("There is no Next room");
-                        this.PrintRoomDetails(player);
+                        Console.WriteLine("This is the end of the Demo");
+                        player.printinfo();
+                        player.DisplayInventory();
                     }
                 }
                 else if (choice == 2)
@@ -133,7 +161,7 @@ namespace Choose_Your_Own_Adventure
             }
             else
             {
-                Console.WriteLine("Invalid input. Please enter 1 or 2.");
+                Console.WriteLine("Invalid input. Please enter 1 or 2 or 3.");
                 this.EnterRoom(player);
             }
         }
