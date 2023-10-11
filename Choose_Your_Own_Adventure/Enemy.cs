@@ -12,8 +12,8 @@ namespace Choose_Your_Own_Adventure
         private Item loot;
         private string Name;
 
-        public Enemy(string name, int attack, int defense, Item loot)
-            : base(name, attack, defense)
+        public Enemy(string name, int hp,int attack, int defense, Item loot)
+            : base(name,hp, attack, defense)
         {
             Loot = loot;
             Name = name;
@@ -43,12 +43,17 @@ namespace Choose_Your_Own_Adventure
         public void fight(Player player)
         {
                 int damage = this.i_Attack - player.getDef();
-                if (damage > 0)
-                {
-                    player.TakeDamage(damage);
-                    Console.WriteLine(this.GetName + " attacks " + player.GetName + " for " + damage + " damage!");
-                    player.fight(this);
-                }
+            if (damage > 0)
+            {
+                player.TakeDamage(damage);
+                Console.WriteLine(this.GetName + " attacks " + player.GetName + " for " + damage + " damage!");
+                player.fight(this);
+            }
+            else 
+            {
+                Console.WriteLine(this.GetName + " attacks seems not hurt at all");
+                player.fight(this);
+            }
         }
         public void DefeatEnemy(Player player)
         {

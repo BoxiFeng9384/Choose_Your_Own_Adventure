@@ -18,11 +18,12 @@ namespace Choose_Your_Own_Adventure
         { 
             s_Name=a_sCharName;
         }
-        public Character(String a_sCharName,int a_iCharAttack,int a_iCharDefense)
+        public Character(String a_sCharName,int hp,int a_iCharAttack,int a_iCharDefense)
         {
             s_Name = a_sCharName;
             i_HP=a_iCharAttack;
             i_Defense = a_iCharDefense;
+            i_HP = hp;
         }
         public int HP 
         {

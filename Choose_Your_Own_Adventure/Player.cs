@@ -13,8 +13,8 @@ namespace Choose_Your_Own_Adventure
     {
         public List<Item> Inventory;
 
-        public Player(string name, int attack, int defense)
-            : base(name, attack, defense)
+        public Player(string name,int hp,int attack, int defense)
+            : base(name,hp, attack, defense)
         {
             Inventory = new List<Item>();
         }
@@ -50,20 +50,21 @@ namespace Choose_Your_Own_Adventure
         }
         public void fight(Enemy enemy)
         {
-            if (enemy.HP <= 0)
-            {
-                enemy.DefeatEnemy(this);
-            }
-            else
-            {
+          
                 int damage = this.i_Attack - enemy.getDef();
                 if (damage > 0) 
                 {
+                    Console.WriteLine(this.GetName + " attacks " + enemy.GetName + " for " + damage + " damage!");
                     enemy.TakeDamage(damage);
-                    Console.WriteLine(this.GetName + " attacks "+enemy.GetName + " for "+damage+" damage!");
+                    if (enemy.HP <= 0)
+                    {
+                    enemy.DefeatEnemy(this);
+                    }
+                    else if(enemy.HP>0)
+                    {
                     enemy.fight(this);
+                    }       
                 }
-            }
         }
         public void fight(Character character)
         {

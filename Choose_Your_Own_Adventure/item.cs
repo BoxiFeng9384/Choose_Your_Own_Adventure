@@ -11,12 +11,14 @@ namespace Choose_Your_Own_Adventure
             private string name;
             private int attackValue;
             private int defenseValue;
+            private int hpValue;
 
-            public Item(string name, int attackValue, int defenseValue)
+            public Item(string name, int attackValue, int defenseValue, int hpValue)
             {
-                this.name = name;
-                this.attackValue = attackValue;
-                this.defenseValue = defenseValue;
+            this.name = name;
+            this.attackValue = attackValue;
+            this.defenseValue = defenseValue;
+            this.hpValue = hpValue;
             }
 
             public string Name

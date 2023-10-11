@@ -22,6 +22,7 @@ namespace Choose_Your_Own_Adventure
         {
             Console.WriteLine("");
             Console.WriteLine("You Found a door. Do you want to try to open it?");
+            Console.WriteLine("Once you open it, you feel that you could not go back ANYMORE.");
             for (int i = 0; i < player.Inventory.Count; i++)
             {
                 Item RightKey = player.Inventory[i];
