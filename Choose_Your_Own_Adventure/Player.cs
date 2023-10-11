@@ -64,7 +64,7 @@ namespace Choose_Your_Own_Adventure
                 if (damage > 0) 
                 {
                     enemy.TakeDamage(damage);
-                    Console.WriteLine($"{s_Name} attacks {enemy.getName} for {damage} damage!");
+                    Console.WriteLine(this.s_Name+" attacks "+enemy.s_Name+ " for "+damage+" damage!");
                     enemy.fight(this);
                 }
             }
@@ -81,7 +81,7 @@ namespace Choose_Your_Own_Adventure
                 if (damage > 0)
                 {
                     character.TakeDamage(damage);
-                    Console.WriteLine($"{s_Name} attacks {character.s_Name} for {damage} damage!");
+                    Console.WriteLine(this.s_Name + " attacks " + character.s_Name + " for " + damage + " damage!");
                     this.fight(character);
                 }
             }

@@ -13,7 +13,7 @@ namespace Choose_Your_Own_Adventure
         private Item Loot;
         private Character Character;
         private int id = 1;
-        private int count = 1;
+        private static int count = 1;
 
         public Room(string description, Enemy enemy , Item loot)
         {
@@ -35,11 +35,11 @@ namespace Choose_Your_Own_Adventure
         public void PrintRoomDetails(Player player)
         {
             Console.WriteLine("");
-            Console.WriteLine($"You enter a room: {Description}");
+            Console.WriteLine($"You enter a room: "+Description);
 
             if (Enemy != null)
             {
-                Console.WriteLine($"An enemy is in the room: {Enemy.s_Name}");
+                Console.WriteLine($"An enemy is in the room: "+Enemy.s_Name);
             }
             this.EnterRoom(player);
         }

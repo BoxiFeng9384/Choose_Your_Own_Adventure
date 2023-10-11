@@ -46,14 +46,14 @@ namespace Choose_Your_Own_Adventure
                 if (damage > 0)
                 {
                     player.TakeDamage(damage);
-                    Console.WriteLine($"{s_Name} attacks {player.getName} for {damage} damage!");
+                    Console.WriteLine(this.s_Name + " attacks " + player.s_Name + " for " + damage + " damage!");
                     player.fight(this);
                 }
         }
         public void DefeatEnemy(Player player)
         {
-            Console.WriteLine($"{Name} has been defeated!");
-            Console.WriteLine($"{Name} drops {Loot.Name} as loot.");
+            Console.WriteLine(Name+" has been defeated!");
+            Console.WriteLine(Name+" drops "+Loot.Name+" as loot.");
             player.AddItemToInventory(loot);
         }
         public override void printinfo()
