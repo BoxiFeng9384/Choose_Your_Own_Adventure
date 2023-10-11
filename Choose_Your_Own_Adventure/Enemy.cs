@@ -46,7 +46,7 @@ namespace Choose_Your_Own_Adventure
                 if (damage > 0)
                 {
                     player.TakeDamage(damage);
-                    Console.WriteLine(this.s_Name + " attacks " + player.s_Name + " for " + damage + " damage!");
+                    Console.WriteLine(this.GetName + " attacks " + player.GetName + " for " + damage + " damage!");
                     player.fight(this);
                 }
         }
@@ -58,7 +58,7 @@ namespace Choose_Your_Own_Adventure
         }
         public override void printinfo()
         {
-            Console.WriteLine("Enemy Name: " + s_Name);
+            Console.WriteLine("Enemy Name: " + GetName);
             Console.WriteLine("Enemy HP: " + i_HP);
             Console.WriteLine("Enemy ATK: " + i_Attack);
             Console.WriteLine("Enemy DEF: " + i_Defense);

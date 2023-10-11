@@ -9,7 +9,7 @@ namespace Choose_Your_Own_Adventure
 {
     internal class Character
     {
-        public String s_Name;
+        private String s_Name;
         protected int i_HP=100;
         protected int i_Attack=10;
         protected int i_Defense=5;
@@ -43,6 +43,13 @@ namespace Choose_Your_Own_Adventure
             get
             {
                 return i_Defense;
+            }
+        }
+        public string GetName 
+        {
+            get 
+            { 
+                return s_Name; 
             }
         }
         public void TakeDamage(int damage) 

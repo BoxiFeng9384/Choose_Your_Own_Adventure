@@ -39,7 +39,7 @@ namespace Choose_Your_Own_Adventure
 
             if (Enemy != null)
             {
-                Console.WriteLine($"An enemy is in the room: "+Enemy.s_Name);
+                Console.WriteLine($"An enemy is in the room: "+Enemy.GetName);
             }
             this.EnterRoom(player);
         }

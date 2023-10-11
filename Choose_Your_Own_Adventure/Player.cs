@@ -22,10 +22,6 @@ namespace Choose_Your_Own_Adventure
         {
             return i_HP;
         }
-        public string getName()
-        {
-            return s_Name;
-        }
         public int getAttack()
         {
             return i_Attack;
@@ -64,7 +60,7 @@ namespace Choose_Your_Own_Adventure
                 if (damage > 0) 
                 {
                     enemy.TakeDamage(damage);
-                    Console.WriteLine(this.s_Name+" attacks "+enemy.s_Name+ " for "+damage+" damage!");
+                    Console.WriteLine(this.GetName + " attacks "+enemy.GetName + " for "+damage+" damage!");
                     enemy.fight(this);
                 }
             }
@@ -81,14 +77,14 @@ namespace Choose_Your_Own_Adventure
                 if (damage > 0)
                 {
                     character.TakeDamage(damage);
-                    Console.WriteLine(this.s_Name + " attacks " + character.s_Name + " for " + damage + " damage!");
+                    Console.WriteLine(this.GetName + " attacks " + character.GetName + " for " + damage + " damage!");
                     this.fight(character);
                 }
             }
         }
         public override void printinfo()
         {
-            Console.WriteLine("Player Name: " + s_Name);
+            Console.WriteLine("Player Name: " + GetName);
             Console.WriteLine("Player HP: " + i_HP);
             Console.WriteLine("Player ATK: " + i_Attack);
             Console.WriteLine("Player DEF: " + i_Defense);
