@@ -69,5 +69,12 @@ namespace Choose_Your_Own_Adventure
                 }
             }
         }
+        public override void printinfo()
+        {
+            Console.WriteLine("Player Name: " + s_Name);
+            Console.WriteLine("Player HP: " + i_HP);
+            Console.WriteLine("Player ATK: " + i_Attack);
+            Console.WriteLine("Player DEF: " + i_Defense);
+        }
     }
 }

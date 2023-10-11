@@ -56,5 +56,12 @@ namespace Choose_Your_Own_Adventure
             Console.WriteLine($"{Name} drops {Loot.Name} as loot.");
             player.AddItemToInventory(loot);
         }
+        public override void printinfo()
+        {
+            Console.WriteLine("Enemy Name: " + s_Name);
+            Console.WriteLine("Enemy HP: " + i_HP);
+            Console.WriteLine("Enemy ATK: " + i_Attack);
+            Console.WriteLine("Enemy DEF: " + i_Defense);
+        }
     }
 }

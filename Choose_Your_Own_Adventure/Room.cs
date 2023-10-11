@@ -18,7 +18,9 @@ namespace Choose_Your_Own_Adventure
             this.Enemy = enemy;
             this.Loot = loot;
         }
-        public Room Nextroom=null;
+        public Room Nextroom = null;
+        public Room Prevroom = null;
+        public Door NextDoor = null;
 
         public void PrintRoomDetails(Player player)
         {
@@ -28,11 +30,6 @@ namespace Choose_Your_Own_Adventure
             {
                 Console.WriteLine($"An enemy is in the room: {Enemy.s_Name}");
             }
-
-            if (Loot != null)
-            {
-                Console.WriteLine($"You find loot in the room: {Loot.Name}");
-            }
             this.EnterRoom(player);
         }
 
@@ -41,8 +38,12 @@ namespace Choose_Your_Own_Adventure
             Console.WriteLine("Choose an action:");
             Console.WriteLine("1. Find Loot in the room");
             Console.WriteLine("2. Fight an enemy");
+            if (Enemy != null) 
+            {
+                Enemy.printinfo();
+            }
             Console.WriteLine("3. Back to previous chioce");
-            Console.Write("Enter your choice (1 or 2): ");
+            Console.Write("Enter your choice (1 or 2 or 3): ");
 
             if (int.TryParse(Console.ReadLine(), out int choice) && (choice == 1 || choice == 2 || choice == 3))
             {
@@ -51,16 +52,27 @@ namespace Choose_Your_Own_Adventure
                     if (Loot != null) 
                     {
                         player.AddItemToInventory(Loot);
+                        this.ChooseAction(player);
+                        Loot = null;
                     }
                     else 
                     { 
-                        Console.WriteLine("There is no Loot in the room"); 
+                        Console.WriteLine("There is no Loot in the room");
+                        this.ChooseAction(player);
                     }
                 }
                 else if (choice == 2) 
                 {
-                    player.fight(Enemy);
-                    this.ChooseAction(player);
+                    if (Enemy != null)
+                    {
+                        player.fight(Enemy);
+                        this.ChooseAction(player);
+                        player.printinfo();
+                    }
+                    else 
+                    {
+                        Console.WriteLine("There is no Enemy Here");
+                    }
                 }
                 else if(choice == 3) 
                 {
@@ -78,24 +90,45 @@ namespace Choose_Your_Own_Adventure
             Console.WriteLine("You find a room you can enter. Choose an action:");
             Console.WriteLine("1. Progress to the next room");
             Console.WriteLine("2. Enter this room");
-            Console.Write("Enter your choice (1 or 2): ");
+            Console.WriteLine("3. Back to the previous room");
+            Console.Write("Enter your choice (1 or 2 or 3): ");
 
-            if (int.TryParse(Console.ReadLine(), out int choice) && (choice == 1 || choice == 2))
+            if (int.TryParse(Console.ReadLine(), out int choice) && (choice == 1 || choice == 2 || choice == 3))
             {
                 if (choice == 1)
                 {
                     if (Nextroom != null)
                     {
-                        Nextroom.PrintRoomDetails(player);
+                        if (NextDoor != null) 
+                        {
+                            NextDoor.OpenDoor(player);
+                        }
+                        else
+                        {
+                            Nextroom.PrintRoomDetails(player);
+                        } 
                     }
                     else
                     {
                         Console.WriteLine("There is no Next room");
+                        this.PrintRoomDetails(player);
                     }
                 }
                 else if (choice == 2)
                 {
                     this.ChooseAction(player);
+                }
+                else if (choice == 3)
+                {
+                    if (Prevroom != null)
+                    {
+                        Prevroom.PrintRoomDetails(player);
+                    }
+                    else
+                    {
+                        Console.WriteLine("There is no previous room");
+                        this.PrintRoomDetails(player);
+                    }
                 }
             }
             else
@@ -104,6 +137,5 @@ namespace Choose_Your_Own_Adventure
                 this.EnterRoom(player);
             }
         }
-
     }
 }

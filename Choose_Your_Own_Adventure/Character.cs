@@ -43,7 +43,7 @@ namespace Choose_Your_Own_Adventure
             i_HP -= damage;
         }
 
-        public void printinfo() 
+        public virtual void printinfo() 
         {
             Console.WriteLine("Name: " + s_Name);
             Console.WriteLine("HP: "+ i_HP);
